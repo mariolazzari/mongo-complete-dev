@@ -22,4 +22,4 @@ db.numbers.insertOne({ a: NumberInt(123) });
 db.numbers.find();
 db.stats(1024);
 // typeof
-typeof db.numbers.find().a;
+typeof db.numbers.findOne().a;
