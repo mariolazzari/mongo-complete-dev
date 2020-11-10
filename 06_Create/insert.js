@@ -24,3 +24,23 @@ db.hobbies.insertMany(hobbies);
 // ordered false -> continue inserting
 hobbies.push({ name: "Bike" });
 db.hobbies.insertMany(hobbies, { ordered: false });
+
+// Write concern
+db.persons.insertOne({ name: "Chrissy", age: 23 }, { writeConcern: { w: 1 } });
+db.persons.insertOne({ name: "Alex", age: 36 }, { writeConcern: { w: 0 } });
+// journal
+db.persons.insertOne(
+  { name: "Michela", age: 22 },
+  { writeConcern: { w: 1, j: true } }
+);
+// w timeout
+db.persons.insertOne(
+  { name: "Miky", age: 22 },
+  { writeConcern: { w: 1, j: true, wtimeout: 1 } }
+);
+db.persons.find();
+
+// import from file
+//mongoimport shows.json -d tvShows -c movies --jsonArray --drop
+use("tvShows");
+db.tvShows.movies.find();
