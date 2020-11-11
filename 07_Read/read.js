@@ -42,3 +42,6 @@ db.movies.find({
 // default
 db.movies.find({ "rating.average": { $gt: 9 }, genres: "Drama" });
 db.movies.find({ $and: [{ genres: "Drama" }, { genres: "Horror" }] });
+
+// not equal
+db.movies.find({ runtime: { $ne: 60 } }).count();
