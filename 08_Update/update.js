@@ -43,3 +43,20 @@ db.users.updateOne({ name: "Chris" }, { $min: { age: 35 } })
 db.users.updateOne({ name: "Chris" }, { $max: { age: 38 } })
 // mul
 db.users.updateOne({ name: "Chris" }, { $mul: { age: 1.1 } })
+
+// unset: delete field
+db.users.updateMany({ isSporty: true }, { $unset: { phone: "" } })
+
+// rename field
+db.users.updateMany({}, {$rename:{age:"totalAge"}})
+db.users.find({}, { name: 1, totalAge: 1, _id: 0 })
+
+// upsert
+db.users.updateOne({ name: "Maria" }, { $set: { age: 70, phone: "030 945623" }})
+db.users.updateOne({ name: "Maria" }, { $set: { age: 70, phone: "030 945623" }}, {upsert:true})
+db.users.find()
+
+// elemMatch
+db.users.find({ "hobbies": { $elemMatch: { title: "Sports", frequency: { $gte: 3 } } } })
+db.users.updateMany({ "hobbies": { $elemMatch: { title: "Sports", frequency: { $gte: 3 } } } } , {$set:{"hobbies.$.highFrequency":true}})
+
