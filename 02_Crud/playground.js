@@ -176,3 +176,6 @@ db.passengers.find({ hobbies: "Sport" });
 
 // access nested object
 db.flightData.find({ "status.description": "On time" });
+
+// clean up
+db.dropDatabase();

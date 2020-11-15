@@ -61,4 +61,8 @@ db.users.find({ "hobbies": { $elemMatch: { title: "Sports", frequency: { $gte: 3
 db.users.updateMany({ "hobbies": { $elemMatch: { title: "Sports", frequency: { $gte: 3 } } } } , {$set:{"hobbies.$.highFrequency":true}})
 
 // find specific and update
-db.users.find({"hobbies.frequency":{$gt:2}})
+db.users.find({ "hobbies.frequency": { $gt: 2 } })
+//db.users.updateMany({"hobbies.frequency":{$gt:2}},{$set:{}})
+
+// clean up
+db.dropDatabase()

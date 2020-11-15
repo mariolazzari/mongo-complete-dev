@@ -19,3 +19,6 @@ db.products.insertOne({
 
 // show documents in collection
 db.products.find();
+
+// clean up
+db.dropDatabase();

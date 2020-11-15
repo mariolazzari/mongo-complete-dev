@@ -44,3 +44,6 @@ db.persons.find();
 //mongoimport shows.json -d tvShows -c movies --jsonArray --drop
 use("tvShows");
 db.tvShows.movies.find();
+
+// clean up
+db.dropDatabase();
