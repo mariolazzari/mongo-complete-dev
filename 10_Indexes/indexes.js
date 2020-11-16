@@ -52,3 +52,4 @@ db.users.createIndex(
 db.sessions.insertOne({ data: "xxxxxx", createdAt: new Date() });
 db.sessions.find();
 db.sessions.createIndex({ createdAt: 1 }, { expireAfterSeconds: 10 });
+db.sessions.find();
